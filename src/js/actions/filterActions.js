@@ -12,10 +12,7 @@ export const filterGame = () => ({ type: FILTER_GAME });
 export const filterSeries = () => ({ type: FILTER_SERIES });
 export const filterEpisode = () => ({ type: FILTER_EPISODE });
 export const filterPoster = () => ({ type: FILTER_POSTER });
-
-export const filterYear = year => dispatch => {
-  dispatch({
-    type: FILTER_YEAR,
-    payload: year,
-  });
-};
+export const filterYear = year => ({
+  type: FILTER_YEAR,
+  payload: year,
+});

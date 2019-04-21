@@ -1,3 +1,4 @@
+import produce from 'immer';
 import {
   FILTER_MOVIE,
   FILTER_GAME,
@@ -6,82 +7,34 @@ import {
   FILTER_YEAR,
   FILTER_POSTER,
 } from '../actions/types';
-import { movieState } from '../store/movieState';
+import { filterState } from '../store/filterState';
 
-export const filterReducer = (state = movieState, action) => {
+export const filterReducer = (state = filterState, action) => {
   switch (action.type) {
     case FILTER_MOVIE:
-      return {
-        ...state,
-        filters: {
-          movie: true,
-          game: false,
-          series: false,
-          episodes: false,
-          year: 0,
-          poster: false,
-        },
-      };
+      return produce(state, draft => {
+        draft.movie = !state.movie;
+      });
     case FILTER_GAME:
-      return {
-        ...state,
-        filters: {
-          movie: false,
-          game: true,
-          series: false,
-          episodes: false,
-          year: 0,
-          poster: false,
-        },
-      };
+      return produce(state, draft => {
+        draft.game = !state.game;
+      });
     case FILTER_SERIES:
-      return {
-        ...state,
-        filters: {
-          movie: false,
-          game: false,
-          series: true,
-          episodes: false,
-          year: 0,
-          poster: false,
-        },
-      };
+      return produce(state, draft => {
+        draft.series = !state.series;
+      });
     case FILTER_EPISODE:
-      return {
-        ...state,
-        filters: {
-          movie: false,
-          game: false,
-          series: false,
-          episodes: true,
-          year: 0,
-          poster: false,
-        },
-      };
+      return produce(state, draft => {
+        draft.episode = !state.episode;
+      });
     case FILTER_YEAR:
-      return {
-        ...state,
-        filters: {
-          movie: false,
-          game: false,
-          series: false,
-          episodes: false,
-          year: action.payload,
-          poster: false,
-        },
-      };
+      return produce(state, draft => {
+        draft.year = action.payload;
+      });
     case FILTER_POSTER:
-      return {
-        ...state,
-        filters: {
-          movie: false,
-          game: false,
-          series: false,
-          episodes: false,
-          year: 0,
-          poster: true,
-        },
-      };
+      return produce(state, draft => {
+        draft.poster = !state.poster;
+      });
     default:
       return state;
   }

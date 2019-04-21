@@ -8,15 +8,81 @@
   padding: 30px;
   margin: 0 auto;
   font-family: "Pacifico", cursive;
-}
+  &__header {
+    text-align: center;
+    border-radius: 5px;
+    padding: 30px;
+    background-color: rgb(99, 96, 96);
+    color: white;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  &__sections {
+    display: flex;
+    flex-wrap: wrap;
+    &__movies {
+      margin-left: 2%;
+      margin-top: 15px;
+      flex: 2;
+      &__text {
+        margin-bottom: 15px;
+      }
+      &__list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      &__card {
+        width: 150px;
+        height: 270px;
+        margin: 5px;
+        overflow: hidden;
+        background-color: gray;
+        border: 2px solid black;
+        border-radius: 5px;
+        box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+        &__header {
+          font-size: 12px;
+          color: white;
+          padding-bottom: 8px;
+          margin-bottom: 5px;
+          text-transform: uppercase;
+        }
+        &__year {
+          font-size: 10px;
+          color: white;
+        }
+      }
+      &__card img {
+        width: 150px;
+        height: 200px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        // @include responsive;
+        width: 100%;
+      }
+    }
 
-.header {
-  text-align: center;
-  padding: 30px;
-  background-color: rgb(99, 96, 96);
-  color: white;
-  font-size: 30px;
-  margin-bottom: 10px;
+    &__filter__movies {
+      border: 2px solid black;
+      border-radius: 5px;
+      box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+      flex: 1;
+      margin-top: 10px;
+      padding: 5px;
+      &__legend {
+        margin-left: 10px;
+      }
+      &__year {
+        width: 100%;
+        border: 1px solid black;
+        display: inline-flex;
+      }
+      &__text {
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+    }
+  }
 }
 
 .search__form {
@@ -39,27 +105,6 @@
     border-bottom-right-radius: 5px;
     justify-content: flex-end;
     padding: 5px;
-  }
-}
-
-.filter__movies {
-  border: 2px solid black;
-  width: 20%;
-  margin-top: 10px;
-  padding: 5px;
-  display: inline-block;
-  float: left;
-  &__legend {
-    margin-left: 10px;
-  }
-  &__year {
-    width: 100%;
-    border: 1px solid black;
-    display: inline-flex;
-  }
-  &__text {
-    margin-top: 20px;
-    margin-bottom: 5px;
   }
 }
 
@@ -97,29 +142,25 @@ input[type="checkbox"]:checked + .checkbox:before {
   content: "\e800";
 }
 
-.movies {
-  width: 78%;
-  margin-left: 2%;
-  margin-top: 15px;
-  float: right;
-  &__text {
-    margin-bottom: 15px;
-  }
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  &__card {
-    width: 140px;
-    height: 300px;
-    margin: 10px;
-  }
-  &__card img {
-    width: 140px;
-    height: 250px;
-  }
-}
-
 span {
   font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) and (min-width: 320px) {
+  .container__sections {
+    &__filter {
+      width: 100%;
+    }
+    &__movies {
+      &__list {
+        justify-content: center;
+      }
+      &__card {
+        width: 75%;
+      }
+    }
+  }
+  .checkbox {
+    display: inline;
+  }
 }
